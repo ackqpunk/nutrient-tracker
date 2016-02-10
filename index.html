@@ -1,0 +1,67 @@
+Copy
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="scripts/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+      <link href="scripts/lib/kendo-ui/styles/kendo.common.min.css">
+      <link href="scripts/lib/kendo-ui/styles/kendo.bootstrap.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+      <div id="SelectionList">
+          <table class="table">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Select</td>
+                    </tr>
+                </thead>
+                <tbody data-template="row-template" data-bind="source: items">
+                    
+                </tbody>
+          </table>
+      </div>
+      
+      <script id="row-template" type="text/x-kendo-template">
+        <tr>
+            <td>#: name #</td>
+            <td><button class="btn btn-primary getFoodsInGroup" data-fg='#: id #'>Select</button></td>
+        </tr>
+      </script>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="scripts/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="scripts/lib/jquery/dist/jquery.js"></script>
+        
+        <script src="scripts/utility/ajaxSetup.js"></script>
+        <script src="scripts/lib/kendo-ui/js/kendo.ui.core.min.js"></script>
+        
+      <script data-main="app/config.js" src="scripts/lib/require/require.js"></script>
+        <script type="application/javascript">
+            $(function(){
+                requirejs(["foodSearch-vm"],function(vm){
+                    
+                        var ele = "#SelectionList";
+                        vm.createAndBindVM(ele);
+
+                });
+            });
+            
+        </script>
+  </body>
+</html>

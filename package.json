@@ -1,0 +1,22 @@
+{
+  "name": "nutrient-tracker",
+  "version": "1.0.0",
+  "description": "Tracks the nutritional requirements of dogs and cats",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ackqpunk/nutrient-tracker.git"
+  },
+  "author": "Ron Berle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ackqpunk/nutrient-tracker/issues"
+  },
+  "homepage": "https://github.com/ackqpunk/nutrient-tracker",
+  "devDependencies": {
+    "bower": "^1.7.7"
+  }
+}

@@ -1,0 +1,27 @@
+Prmote data model changes that are not EDMX changes
+
+Do you want to enter in the food and see where the animal is for the food requirements?
+
+Inputs:
+Food
+    is it going to be products that already contain a list of ingredients?
+    are you going to input each igredient manually?
+    
+API Notes:
+Lists => brings back ndbno
+Foor Report => brings back details about ndbno
+    + need to extract info from food report to provide nutritional info
+
+Program Flow
+1.  Add Animal Info
+2.  Choose from preselects
+      Or make new preselect
+      Or start new builder
+3.  As items are chosen, the RDAs get updated
+
+
+
+Nutrient Flow
+ 1.  Get food
+ 2.  Get type and quantity
+ 3.  Add to list in progress
