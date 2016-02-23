@@ -1,0 +1,9 @@
+.animal > img {
+    height: 96px;
+}
+#Animals > div {
+    display: inline-table;
+}
+#Animals .choice input {
+    text-align: center;
+}

@@ -10,8 +10,9 @@ Copy
 
     <!-- Bootstrap -->
     <link href="scripts/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-      <link href="scripts/lib/kendo-ui/styles/kendo.common.min.css">
-      <link href="scripts/lib/kendo-ui/styles/kendo.bootstrap.min.css">
+      <link href="scripts/lib/kendo-ui/styles/kendo.common.min.css" rel="stylesheet">
+      <link href="scripts/lib/kendo-ui/styles/kendo.bootstrap.min.css" rel="stylesheet">
+      <link href="content/css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,6 +22,24 @@ Copy
     <![endif]-->
   </head>
   <body>
+      <h1>Nutrient Tracker</h1>
+      <div class="jumbotron">
+          <div id="Animals">
+            <h3>Select an Animal</h3>
+              <div class="choice">
+                <div class="animal">
+                    <img src="content/images/icons/Dog.png"/>
+                </div>
+                  <input type="radio" name="animal" value="dog"/>
+              </div>
+              <div class="choice">
+                <div class="animal">
+                    <img src="content/images/icons/Cat.png"/>
+                </div>
+                  <input type="radio" name="animal" value="cat"/>
+              </div>
+          </div>
+      </div>
       <div id="SelectionList">
           <table class="table">
                 <thead>
