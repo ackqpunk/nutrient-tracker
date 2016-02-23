@@ -23,24 +23,47 @@ Copy
   </head>
   <body>
       <h1>Nutrient Tracker</h1>
-      <div class="jumbotron">
-          <div id="Animals">
-            <h3>Select an Animal</h3>
-              <div class="choice">
-                <div class="animal">
-                    <img src="content/images/icons/Dog.png"/>
-                </div>
-                  <input type="radio" name="animal" value="dog"/>
-              </div>
+      <div id="Animals" class="section col-md-3">
+            <div class="title">1. Select an Animal</div>
+            <div class="choice">
+            <div class="animal">
+                <img src="content/images/icons/Dog.png"/>
+            </div>
+            <label class="checkbox-inline">
+              <input type="radio" name="animal" value="puppy"> Puppy
+            </label>
+            <label class="checkbox-inline">
+              <input type="radio" name="animal" value="dog"> Dog
+            </label>
+          </div>
               <div class="choice">
                 <div class="animal">
                     <img src="content/images/icons/Cat.png"/>
                 </div>
-                  <input type="radio" name="animal" value="cat"/>
+                <label class="checkbox-inline">
+                  <input type="radio" name="animal" value="kitten"> Kitten
+                </label>
+                <label class="checkbox-inline">
+                  <input type="radio" name="animal" value="cat"> Cat
+                </label>
               </div>
+          <div class="form-group">
+              <label>Weight (lbs)</label>
+              <input type="textbox" class="form-control"/>
+          </div>
+          <div>
+            <button id="BtnSelectItems" class="btn btn-primary">Select Food</button>
           </div>
       </div>
-      <div id="SelectionList">
+            
+      <div id="Results" class="section col-md-7">
+        <div class="title">Results</div>
+        <div>
+            
+          
+        </div>
+      </div>
+      <div id="SelectionList" data-role="window" data-title="Select food" >
           <table class="table">
                 <thead>
                     <tr>
@@ -77,8 +100,13 @@ Copy
                     
                         var ele = "#SelectionList";
                         vm.createAndBindVM(ele);
-
+                    
                 });
+                
+                $("#BtnSelectItems").on("click", function(){
+                    
+                    $("#SelectionList").data("kendoWindow").open();
+                })
             });
             
         </script>

@@ -1,8 +1,31 @@
+body {
+    padding: 1.6em;
+}
+.section {
+    padding: 1.2em;
+    border: 2px solid #777;
+    border-radius: 6px;
+}
+.section .title {
+    font-size: 1.6em;
+    padding-bottom: .6em;
+    width: 100%;
+}
+
+.animal {
+    text-align: center;
+}
 .animal > img {
-    height: 96px;
+    height: 72px;
+}
+#Animals {
+    width: 420px;
 }
 #Animals > div {
     display: inline-table;
+}
+#Animals .choice {
+    min-width: 12em;
 }
 #Animals .choice input {
     text-align: center;
