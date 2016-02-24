@@ -22,6 +22,8 @@
   "devDependencies": {
     "jquery": "^2.2.0",
     "bootstrap": "^3.3.6",
-    "kendo-ui": "kendo-ui-core#^2016.1.208"
+    "kendo-ui": "kendo-ui-core#^2016.1.208",
+    "font-awesome": "~4.5.0",
+    "underscore": "~1.8.3"
   }
 }

@@ -1,15 +1,51 @@
 body {
-    padding: 1.6em;
+    background-image: url('../images/backgrounds/cat.gif');
+    background-size: cover;
+    background-position: right;
+    color: #fafafa;
 }
+body, html {height: 100%; width: 100%; marign: 0;
+    padding: 0;}
+.overlay {
+    background-color: rgba(0,0,0,.8);
+    height: 100%;
+    width: 100%;
+    position:fixed;
+    overflow: scroll;
+}
+
+
+
 .section {
     padding: 1.2em;
-    border: 2px solid #777;
+/*    border: 2px solid #333;*/
     border-radius: 6px;
 }
 .section .title {
     font-size: 1.6em;
     padding-bottom: .6em;
     width: 100%;
+}
+
+
+ul#Steps {
+    margin: 0px;
+    padding: 0px;
+}
+ul#Steps li {
+    list-style: none;
+    width: 45%;
+    display: inline-table;
+}
+
+ul#FoodSelection {
+    margin: 0px;
+    padding: 0px;
+}
+ul#FoodSelection li {
+    list-style: none;
+    width: 45%;
+    display: inline-table;
 }
 
 .animal {
@@ -19,14 +55,35 @@ body {
     height: 72px;
 }
 #Animals {
-    width: 420px;
+    
 }
 #Animals > div {
     display: inline-table;
 }
 #Animals .choice {
-    min-width: 12em;
+    min-width: 10em;
 }
 #Animals .choice input {
     text-align: center;
 }
+
+#FgSearch > * {
+    margin-bottom: 6px;
+}
+
+/* OVERRIDES */
+.radio-inline  {
+  margin-top: 0;
+  margin-left: 0px !important;
+}
+
+.btn-minimal {
+    color: #fafafa;
+    background-color: transparent;
+    border-color: #fafafa;
+}
+.btn-minimal:hover{
+    color: #ddd;
+    border-color: #ddd;
+}
+    

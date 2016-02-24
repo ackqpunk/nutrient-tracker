@@ -1,4 +1,3 @@
-Copy
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +11,7 @@ Copy
     <link href="scripts/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
       <link href="scripts/lib/kendo-ui/styles/kendo.common.min.css" rel="stylesheet">
       <link href="scripts/lib/kendo-ui/styles/kendo.bootstrap.min.css" rel="stylesheet">
+      <link href="scripts/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
       <link href="content/css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,65 +22,116 @@ Copy
     <![endif]-->
   </head>
   <body>
-      <h1>Nutrient Tracker</h1>
-      <div id="Animals" class="section col-md-3">
-            <div class="title">1. Select an Animal</div>
-            <div class="choice">
-            <div class="animal">
-                <img src="content/images/icons/Dog.png"/>
-            </div>
-            <label class="checkbox-inline">
-              <input type="radio" name="animal" value="puppy"> Puppy
-            </label>
-            <label class="checkbox-inline">
-              <input type="radio" name="animal" value="dog"> Dog
-            </label>
-          </div>
-              <div class="choice">
-                <div class="animal">
-                    <img src="content/images/icons/Cat.png"/>
-                </div>
-                <label class="checkbox-inline">
-                  <input type="radio" name="animal" value="kitten"> Kitten
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="animal" value="cat"> Cat
-                </label>
+      <div class="overlay">
+          <div class="container">
+              <h1>Nutrient Tracker</h1>
+              <ul id="Steps">
+                <li id="Animals">
+                    <h3>1. Select an Animal</h3>
+                    <div class="choice">
+                    <div class="animal">
+                        <img src="content/images/icons/Dog.png"/>
+                    </div>
+                    <label class="radio-inline">
+                      <input type="radio" name="animal" value="puppy"> Puppy
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="animal" value="dog"> Dog
+                    </label>
+                  </div>
+                      <div class="choice">
+                        <div class="animal">
+                            <img src="content/images/icons/Cat.png"/>
+                        </div>
+                        <label class="radio-inline">
+                          <input type="radio" name="animal" value="kitten"> Kitten
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="animal" value="cat"> Cat
+                        </label>
+                      </div>
+                </li>
+                <li>
+                  <h3>2. Enter in the weight</h3>
+                  <div class="form-group">
+                    <label>Weight (lbs)</label>
+                    <input type="textbox" class="form-control"/>
+                  </div>  
+                   <h3>3. Add food</h3>
+                    <div>
+                    <button id="BtnSelectItems" class="btn btn-minimal">Select Food</button>
+                  </div>
+                </li>
+              </ul>
+              
+              <div id="Results">
+                
               </div>
-          <div class="form-group">
-              <label>Weight (lbs)</label>
-              <input type="textbox" class="form-control"/>
-          </div>
-          <div>
-            <button id="BtnSelectItems" class="btn btn-primary">Select Food</button>
-          </div>
-      </div>
-            
-      <div id="Results" class="section col-md-7">
-        <div class="title">Results</div>
-        <div>
-            
-          
-        </div>
-      </div>
-      <div id="SelectionList" data-role="window" data-title="Select food" >
-          <table class="table">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Select</td>
-                    </tr>
-                </thead>
-                <tbody data-template="row-template" data-bind="source: items">
+              
+              <ul id="FoodSelection">
+                  <li id="Find">
+                      
+                      <div data-bind="invisible: fgSelected">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Select</td>
+                                </tr>
+                            </thead>
+                            <tbody data-template="food-group-row-template" data-bind="source: items">
+
+                            </tbody>
+                      </table>
+                      </div>
+                      <div id="FgSearch" data-bind="visible: fgSelected">
+                        <button class="btn btn-minimal btn-sm" data-bind="visible: fgSelected"><span class="fa fa-arrow-left"></span> Back</button>
+                        <input type="text" class="form-control" data-bind="value: search, events: {keyup: filterFoodList}" placeholder="Search...">
+                        <table class="table table-condensed">
+                          <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Select</td>
+                                </tr>
+                            </thead>
+                            <tbody data-template="food-item-row-template" data-bind="source: itemsInFgSearch">
+
+                            </tbody>
+                        </table>
+                      </div>
+                      
+                  </li>
+                  <li id="Selections">
+                      <h3>Selected Items</h3>
+                    <ul data-template="selected-items-row-template" data-bind="source: selectedItems">
+                        
+                    </ul>
+                  </li>
+              </ul>
                     
-                </tbody>
-          </table>
+                  
+                  
+           
+
+              
+          </div>
       </div>
-      
-      <script id="row-template" type="text/x-kendo-template">
+      <script id="selected-items-row-template" type="text/x-kendo-template">
+        <li>
+            <div>#: name #</div>
+            <button data-ndbno="#: ndbno #"></button>
+        </li>
+      </script>
+      <script id="food-group-row-template" type="text/x-kendo-template">
         <tr>
             <td>#: name #</td>
-            <td><button class="btn btn-primary getFoodsInGroup" data-fg='#: id #'>Select</button></td>
+            <td><button class="btn btn-minimal btn-sm getFoodsInGroup" data-fg='#: id #' data-fg-name="#: name #">Select</button></td>
+        </tr>
+      </script>
+      <script id="food-item-row-template" type="text/x-kendo-template">
+        <tr>
+            <td>#: name #</td>
+            <td><button class="btn btn-minimal btn-sm addToList" data-ndbno='#: ndbno #' data-fg-name="#: name #">Select</button></td>
         </tr>
       </script>
 
@@ -92,16 +143,20 @@ Copy
         
         <script src="scripts/utility/ajaxSetup.js"></script>
         <script src="scripts/lib/kendo-ui/js/kendo.ui.core.min.js"></script>
+      <script src="scripts/lib/underscore/underscore-min.js"></script>
         
       <script data-main="app/config.js" src="scripts/lib/require/require.js"></script>
         <script type="application/javascript">
             $(function(){
                 requirejs(["foodSearch-vm"],function(vm){
                     
-                        var ele = "#SelectionList";
+                        var ele = "#Find";
                         vm.createAndBindVM(ele);
                     
                 });
+                var windowOptions = {
+                    visible: false
+                }
                 
                 $("#BtnSelectItems").on("click", function(){
                     
