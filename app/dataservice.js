@@ -4,7 +4,8 @@ define(function(require){
         getFoodGroups: getFoodGroups,
         getFoodsInGroup: getFoodsInGroup,
         getNutrientInfo: getNutrientInfo,
-        search: search
+        search: search,
+        foodReport: foodReport
     }
    
     function getFoodGroups(){
@@ -18,5 +19,8 @@ define(function(require){
     }
     function search(search, type){
         return $.getJSON("http://api.nal.usda.gov/ndb/search", {q: search});
+    }
+    function foodReport(ndbno){
+        return $.getJSON("http://api.nal.usda.gov/ndb/reports", {type: 'b', ndbno: ndbno});
     }
 });

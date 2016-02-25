@@ -86,4 +86,9 @@ ul#FoodSelection li {
     color: #ddd;
     border-color: #ddd;
 }
-    
+.uom {
+    padding: 1.2em;
+}
+.uom label {
+    font-size: .92em;
+}
