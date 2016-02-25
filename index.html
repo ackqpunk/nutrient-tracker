@@ -57,9 +57,9 @@
                     <label>Weight (lbs)</label>
                     <input type="textbox" class="form-control"/>
                   </div>  
-                   <h3>3. Add food</h3>
+                   
                     <div>
-                    <button id="BtnSelectItems" class="btn btn-minimal">Select Food</button>
+                
                   </div>
                 </li>
               </ul>
@@ -67,7 +67,7 @@
               <div id="Results">
                 
               </div>
-              
+              <h3>3. Add food</h3>
               <ul id="FoodSelection">
                   <li id="Find">
                       
@@ -101,11 +101,11 @@
                       </div>
                       
                   </li>
-                  <li id="Selections">
-                      <h3>Selected Items</h3>
-                    <ul data-template="selected-items-row-template" data-bind="source: selectedItems">
-                        
-                    </ul>
+                  <li >
+
+                        <ul id="SelectedItems">
+
+                        </ul>
                   </li>
               </ul>
                     
@@ -119,7 +119,6 @@
       <script id="selected-items-row-template" type="text/x-kendo-template">
         <li>
             <div>#: name #</div>
-            <button data-ndbno="#: ndbno #"></button>
         </li>
       </script>
       <script id="food-group-row-template" type="text/x-kendo-template">
@@ -131,8 +130,37 @@
       <script id="food-item-row-template" type="text/x-kendo-template">
         <tr>
             <td>#: name #</td>
-            <td><button class="btn btn-minimal btn-sm addToList" data-ndbno='#: ndbno #' data-fg-name="#: name #">Select</button></td>
+            <td><button class="btn btn-minimal btn-sm getMeasureAndValue" data-ndbno='#: ndbno #' data-fg-name="#: name #">Select</button></td>
         </tr>
+      </script>
+      <script id="uom-template" type="text/x-kendo-template">
+          <div class="uom">
+            <div class="form-group">
+                <label>Select a unit of measure</label>
+                <select id="UOM" class="form-control input-sm">
+                    # for(var i = 0; i < measures.length; i++ ) { #
+                        <option>#: measures[i] #</option>
+                    # } #
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select a quantity:</label>
+                <input id="Qty" type="text" class="form-control input-sm" />
+            </div>
+            <input id="Ndbno" type="hidden" value="#: ndbno #" />
+            <input id="Name" type="hidden" value="#: name #"/>
+            <button id="BtnAddToList" class="btn btn-minimal btn-sm">Add to list</button>
+          </div>
+      </script>
+      <script id="selected-item-template" type="text/x-kendo-template">
+      
+        # for(var i = 0; i < data.length; i++){ #
+            <li class="selectedItem" style="width: 100%;">
+            <h4>#: data[i].name #</h4>
+            <div>UoM: #: data[i].uom #</div>
+            <div>Qty: #: data[i].qty #</div>
+            </li>
+        # } #
       </script>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

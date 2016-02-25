@@ -43,6 +43,7 @@ define(function(require){
         vm.filterFoodList = filterFoodList;
         vm.search  = "";
         vm.selectedItems = [];
+        vm.currentReport = {};
         
         vm.activate();
         vm = kendo.observable(vm)
@@ -66,20 +67,50 @@ define(function(require){
             dataservice.getFoodsInGroup(fg).done(function(data){
                vm.set('itemsInFg', data.list.item);
                vm.set('itemsInFgSearch', data.list.item );
-                $('.addToList').on('click', function(e){
-                    var ndbno = $(e.currentTarget).data("ndbno");
-                    var item = _.find(vm.itemsInFgSearch, function(x){
-                        return x.ndbno === ndbno;
-                    });
-                    if(item){
-                        var selections = vm.get('selectedItems');
-                        selections.push(item);
-                        vm.set('selectedItems', selections);
-                    }
-                });
+                $('.getMeasureAndValue').on('click', getMeasureAndValue);
             });
+        }
+        function getMeasureAndValue(e){
+            var ndbno = $(e.currentTarget).data("ndbno");
+                    var div = "<div id='SelectUOM' style='display: none;'></div>"
+                    $(e.currentTarget).parent().parent().after(div)
+                    dataservice.foodReport(ndbno).done(function(data){
+                        vm.set('currentReport', data);
+                        var measures = _.pluck(data.report.food.nutrients[0].measures, 'label');
+                        var ndbno = data.report.food.ndbno;
+                        var name = data.report.food.name;
+                        vm.set('currentMeasures', measures);
+                        var template = kendo.template($("#uom-template").html());
+                        var uomData = {
+                            measures: measures,
+                            ndbno: ndbno,
+                            name: name
+                        };
+                        var templateHtml = template(uomData);
+                        $("#SelectUOM").html(templateHtml);
+                        $("#SelectUOM").slideToggle();
+                        $("#BtnAddToList").on('click', function(){
+                            var uom = $("#UOM").val();
+                            var qty = $("#Qty").val();
+                            var name = $("#Name").val();
+                            var ndbno = $("#Ndbno").val();
+                            var obj = {
+                                uom: uom,
+                                qty: qty,
+                                name: name,
+                                ndbno: ndbno
+                            };
+                            vm.selectedItems.push(obj);
+                            vm.trigger('change', {field: 'selectedItems'});
+                            var selectedTemplate = kendo.template($("#selected-item-template").html());
+                            var selectedHtml = selectedTemplate(vm.selectedItems);
+                            $("#SelectedItems").html(selectedHtml);
+                        })
+                    })
         }
         
         return vm;
     }
 })
+
+
