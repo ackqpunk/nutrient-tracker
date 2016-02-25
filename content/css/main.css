@@ -92,3 +92,6 @@ ul#FoodSelection li {
 .uom label {
     font-size: .92em;
 }
+li.selectedItem{
+    width: 100%;
+}

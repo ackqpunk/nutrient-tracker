@@ -57,9 +57,9 @@
                     <label>Weight (lbs)</label>
                     <input type="textbox" class="form-control"/>
                   </div>  
-                   <h3>3. Add food</h3>
+                   
                     <div>
-                    <button id="BtnSelectItems" class="btn btn-minimal">Select Food</button>
+                
                   </div>
                 </li>
               </ul>
@@ -67,7 +67,7 @@
               <div id="Results">
                 
               </div>
-              
+              <h3>3. Add food</h3>
               <ul id="FoodSelection">
                   <li id="Find">
                       
@@ -117,7 +117,6 @@
           </div>
       </div>
       <script id="selected-items-row-template" type="text/x-kendo-template">
-      # debugger; #
         <li>
             <div>#: name #</div>
         </li>
@@ -139,7 +138,6 @@
             <div class="form-group">
                 <label>Select a unit of measure</label>
                 <select id="UOM" class="form-control input-sm">
-                    #debugger;#
                     # for(var i = 0; i < measures.length; i++ ) { #
                         <option>#: measures[i] #</option>
                     # } #
@@ -155,9 +153,12 @@
           </div>
       </script>
       <script id="selected-item-template" type="text/x-kendo-template">
+      
         # for(var i = 0; i < data.length; i++){ #
-            <li>
-            <div>Name: #: data[i].name #</div>
+            <li class="selectedItem" style="width: 100%;">
+            <h4>#: data[i].name #</h4>
+            <div>UoM: #: data[i].uom #</div>
+            <div>Qty: #: data[i].qty #</div>
             </li>
         # } #
       </script>
