@@ -1,0 +1,34 @@
+Add patients name
+-- Pets name and owners last name
+-- Save information somewhere
+-- Print
+
+Style Changes
+-- Move red numbers to the top
+-- Range of excess
+    -- Over in B12
+    -- Get high threasholds
+    -- Get ranges and display number
+        -- Slight Excess
+        -- Alarm point (Go to the top and flashing)
+        
+Make sure session info lasts past 401
+
+We have a plan on reports
+-- Research existing reports on provider portal
+-- Certain reports 
+
+Merchant statements 
+-- VRA only
+
+
+For nutrient requirements
+-- Rows = animal
+-- Col = weight category and nutrients
+
+    weight     120
+Dog /1000kcal  3.2
+dog 1
+dog 2
+
+Get thresholds from Greg
