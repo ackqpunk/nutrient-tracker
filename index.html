@@ -28,28 +28,8 @@
               <ul id="Steps">
                 <li id="Animals">
                     <h3>1. Select an Animal</h3>
-                    <div class="choice">
-                    <div class="animal">
-                        <img src="content/images/icons/Dog.png"/>
-                    </div>
-                    <label class="radio-inline">
-                      <input type="radio" name="animal" value="puppy"> Puppy
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="animal" value="dog"> Dog
-                    </label>
-                  </div>
-                      <div class="choice">
-                        <div class="animal">
-                            <img src="content/images/icons/Cat.png"/>
-                        </div>
-                        <label class="radio-inline">
-                          <input type="radio" name="animal" value="kitten"> Kitten
-                        </label>
-                        <label class="radio-inline">
-                          <input type="radio" name="animal" value="cat"> Cat
-                        </label>
-                      </div>
+                    <!-- Load Animal Selection -->
+                    <div data-load="./app/views/animal-selection.html"></div>
                 </li>
                 <li>
                   <h3>2. Enter in the weight</h3>
@@ -68,48 +48,7 @@
                 
               </div>
               <h3>3. Add food</h3>
-              <ul id="FoodSelection">
-                  <li id="Find">
-                      
-                      <div data-bind="invisible: fgSelected">
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Select</td>
-                                </tr>
-                            </thead>
-                            <tbody data-template="food-group-row-template" data-bind="source: items">
-
-                            </tbody>
-                      </table>
-                      </div>
-                      <div id="FgSearch" data-bind="visible: fgSelected">
-                        <button class="btn btn-minimal btn-sm" data-bind="visible: fgSelected"><span class="fa fa-arrow-left"></span> Back</button>
-                        <input type="text" class="form-control" data-bind="value: search, events: {keyup: filterFoodList}" placeholder="Search...">
-                        <table class="table table-condensed">
-                          <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Select</td>
-                                </tr>
-                            </thead>
-                            <tbody data-template="food-item-row-template" data-bind="source: itemsInFgSearch">
-
-                            </tbody>
-                        </table>
-                      </div>
-                      
-                  </li>
-                  <li >
-
-                        <ul id="SelectedItems">
-
-                        </ul>
-                  </li>
-              </ul>
-                    
-                  
+              <div data-load="./app/views/food-selection.html"></div>
                   
            
 
@@ -171,25 +110,22 @@
         
         <script src="scripts/utility/ajaxSetup.js"></script>
         <script src="scripts/lib/kendo-ui/js/kendo.ui.core.min.js"></script>
-      <script src="scripts/lib/underscore/underscore-min.js"></script>
+        <script src="scripts/lib/underscore/underscore-min.js"></script>
+      <script src="scripts/lib/linqjs/jquery.linq.min.js"></script>
+      <script src="scripts/lib/PubSubJS/src/pubsub.js"></script>
         
       <script data-main="app/config.js" src="scripts/lib/require/require.js"></script>
         <script type="application/javascript">
             $(function(){
-                requirejs(["foodSearch-vm"],function(vm){
+                requirejs(['./app/common/util.js'],function(util){
                     
-                        var ele = "#Find";
-                        vm.createAndBindVM(ele);
+                    $("div[data-load]").each(function(i,v){
+                        var url = $(v).data('load');
+                        util.loadPartial($(v), url);
+                    });
                     
                 });
-                var windowOptions = {
-                    visible: false
-                }
-                
-                $("#BtnSelectItems").on("click", function(){
-                    
-                    $("#SelectionList").data("kendoWindow").open();
-                })
+
             });
             
         </script>
