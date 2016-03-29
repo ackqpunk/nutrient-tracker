@@ -32,3 +32,8 @@ dog 1
 dog 2
 
 Get thresholds from Greg
+
+
+-- Choose food
+-- Get Nutrients from food via ajax and write them into object
+    -- Get only 
