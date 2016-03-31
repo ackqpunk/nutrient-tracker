@@ -1,10 +1,12 @@
 define(function(require){
     
     return {
-        nutrients
+        nutrientList: nutrientList()
     }
     
-    var nutrients = [
+    function nutrientList(){
+        
+        return [
   {
     "ahod_name": "Alpha-linoleic Acid",
     "unit": "g",
@@ -276,4 +278,6 @@ define(function(require){
     "ndb_name": "Zinc, Zn"
   }
 ];
+    }
+
 })

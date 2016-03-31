@@ -1,6 +1,6 @@
 define(function(require){
     
-    var animalRequirements = require('./data/animal-requirements.js');
+    var animalRequirements = require('../data/animal-requirements.js');
     var pubSub = require('../common/pubSub.js');
     var processor = require('../common/processor.js');
     
@@ -23,13 +23,14 @@ define(function(require){
         
         
         vm.activate = function(){
-            pubSub.subscribe("provideFoodList",function(data){
+            pubSub.subscribe("provideFoodList",function(msg, data){
                 vm.set('foodList', data);
                 var results = processor.getResultsFromFoodList(data);
             });
         }
         
         vm = kendo.observable(vm);
+        vm.activate();
         return vm;
     }
     
