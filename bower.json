@@ -24,6 +24,9 @@
     "bootstrap": "^3.3.6",
     "kendo-ui": "kendo-ui-core#^2016.1.208",
     "font-awesome": "~4.5.0",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "lodash": "~4.6.1",
+    "postal.js": "^1.0.8",
+    "PubSubJS": "pubsub-js#^1.5.3"
   }
 }

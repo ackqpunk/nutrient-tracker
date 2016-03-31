@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/ackqpunk/nutrient-tracker",
   "devDependencies": {
+    "bower": "^1.7.7",
+    "gulp-webserver": "^0.9.1",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "gulp-webserver": "^0.9.1",
+    "gulp": "^3.9.1",
     "bower": "^1.7.7"
   }
 }

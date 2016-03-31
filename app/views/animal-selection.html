@@ -1,0 +1,36 @@
+<div id="AnimalSelection">
+    <div class="choice">
+        <div class="animal">
+            <img src="content/images/icons/Dog.png"/>
+        </div>
+        <label class="radio-inline">
+          <input type="radio" name="animal" value="puppy"> Puppy
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="animal" value="dog"> Dog
+        </label>
+    </div>
+    <div class="choice">
+        <div class="animal">
+            <img src="content/images/icons/Cat.png"/>
+        </div>
+        <label class="radio-inline">
+          <input type="radio" name="animal" value="kitten"> Kitten
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="animal" value="cat"> Cat
+        </label>
+    </div>
+</div>
+
+
+<script>
+    $(function(){
+         requirejs(['./app/vm/animal-selection.js'], function (vm) {
+            var ele = "#AnimalSelection";
+            var viewId = "";
+             var options = {};
+            var vm = vm.createAndBindVM(ele, options, viewId);
+        });
+    });
+</script>

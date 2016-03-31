@@ -1,0 +1,21 @@
+<div id="Results">
+    <ul data-template="tmplNutrientResults" data-bind="source: nutrientResults"></ul>
+</div>
+
+<script id="tmplNutrientResults" type="x-kendo-template">
+    <li>
+        <div class="nutrientName">#: ahod_name #</div>
+        <div class="nutrientSum">#: sum #/#: required # <small>#: uom #</small></div>
+    </li>
+</script>
+
+<script>
+    $(function(){
+        requirejs(['./app/vm/nutrient-results.js'], function (vm) {
+            var ele = "#Results";
+            var viewId = "";
+             var options = {};
+            var vm = vm.createAndBindVM(ele, options, viewId);
+        });
+    });
+</script>  

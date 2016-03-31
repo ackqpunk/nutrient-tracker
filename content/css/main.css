@@ -95,3 +95,42 @@ ul#FoodSelection li {
 li.selectedItem{
     width: 100%;
 }
+
+.foodList {
+    padding-left: 2em;
+    
+}
+.foodList ul {
+    padding: 0;
+    margin: 0;
+}
+.foodList .foodTitle {
+    font-size: 1.4em;
+}
+.foodList .foodDetails {
+    margin-left: .8em;
+}
+.commandButtons {
+    margin-top: .8em;
+}
+#SelectedItems li {
+    margin-bottom: 1.2em;
+}
+
+#Results li {
+    list-style: none;
+    width: 160px;
+    display: inline-table;
+    height: 96px;
+    line-height: 2em;
+}
+
+#Results li .nutrientName {
+    font-size: .9em;
+}
+#Results li .nutrientSum {
+    font-size: 3.2em;
+}
+#Results li .nutrientSum small {
+    font-size: .6em
+}
