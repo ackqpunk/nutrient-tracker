@@ -119,7 +119,7 @@ li.selectedItem{
 
 #Results li {
     list-style: none;
-    width: 160px;
+    width: 200px;
     display: inline-table;
     height: 96px;
     line-height: 2em;
