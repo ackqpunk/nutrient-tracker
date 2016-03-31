@@ -23,11 +23,17 @@ define(function(require){
         };
         
         
+        
         vm.activate = function(){
             pubSub.subscribe("provideFoodList",function(msg, data){
                 vm.set('foodList', data);
                 var results = processor.getResultsFromFoodList(data);
                 vm.set('nutrientResults', results);
+                
+            });
+            $(".backToFoodList").on('click', function(e){
+                $("#Results").fadeOut();
+                $("#FoodSelection").fadeIn();
             });
         }
         

@@ -119,8 +119,8 @@ define(function(require){
         function viewResults(){
             var data = vm.get('selectedItems');
             pubSub.publish("provideFoodList", data.toJSON());
-            $("#FoodSelection").hide();
-            $("#Results").show();
+            $("#FoodSelection").fadeOut();
+            $("#Results").fadeIn();
         }
         
         function removeSelectedItem(e){
