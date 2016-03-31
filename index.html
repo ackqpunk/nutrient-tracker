@@ -59,47 +59,8 @@
             <div>#: name #</div>
         </li>
       </script>
-      <script id="food-group-row-template" type="text/x-kendo-template">
-        <tr>
-            <td>#: name #</td>
-            <td><button class="btn btn-minimal btn-sm getFoodsInGroup" data-fg='#: id #' data-fg-name="#: name #">Select</button></td>
-        </tr>
-      </script>
-      <script id="food-item-row-template" type="text/x-kendo-template">
-        <tr>
-            <td>#: name #</td>
-            <td><button class="btn btn-minimal btn-sm getMeasureAndValue" data-ndbno='#: ndbno #' data-fg-name="#: name #">Select</button></td>
-        </tr>
-      </script>
-      <script id="uom-template" type="text/x-kendo-template">
-          <div class="uom">
-            <div class="form-group">
-                <label>Select a unit of measure</label>
-                <select id="UOM" class="form-control input-sm">
-                    # for(var i = 0; i < measures.length; i++ ) { #
-                        <option>#: measures[i] #</option>
-                    # } #
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Select a quantity:</label>
-                <input id="Qty" type="text" class="form-control input-sm" />
-            </div>
-            <input id="Ndbno" type="hidden" value="#: ndbno #" />
-            <input id="Name" type="hidden" value="#: name #"/>
-            <button id="BtnAddToList" class="btn btn-minimal btn-sm">Add to list</button>
-          </div>
-      </script>
-      <script id="selected-item-template" type="text/x-kendo-template">
       
-        # for(var i = 0; i < data.length; i++){ #
-            <li class="selectedItem" style="width: 100%;">
-            <h4>#: data[i].name #</h4>
-            <div>UoM: #: data[i].uom #</div>
-            <div>Qty: #: data[i].qty #</div>
-            </li>
-        # } #
-      </script>
+      
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -112,6 +73,8 @@
         <script src="scripts/lib/underscore/underscore-min.js"></script>
       <script src="scripts/lib/linqjs/jquery.linq.min.js"></script>
       <script src="scripts/lib/PubSubJS/src/pubsub.js"></script>
+      
+      <script src="scripts/utility/underscore-extensions.js"></script>
         
       <script data-main="app/config.js" src="scripts/lib/require/require.js"></script>
         <script type="application/javascript">

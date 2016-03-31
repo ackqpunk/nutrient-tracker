@@ -51,10 +51,17 @@ define(function(require){
             return vm.get('selectedItems').length > 0;
         }
         vm.viewResults = viewResults;
+        vm.removeSelectedItem = removeSelectedItem;
+        
         
         vm.activate();
         vm = kendo.observable(vm)
         
+        vm.bind('change', function(e){
+            if(e.field === 'selectedItem'){
+                refreshSelectedItemsTemplate();
+            }
+        });
         
         function goBackToFg(){
             vm.set("fgSelected",false);
@@ -116,6 +123,13 @@ define(function(require){
             $("#Results").show();
         }
         
+        function removeSelectedItem(e){
+            var ndbno = $(e.currentTarget).data("ndbno");
+            var newList = _.filter(vm.selectedItems, function(x){ return x.ndbno !== ndbno });
+            vm.set('selectedItems', newList);
+            vm.trigger('change', {field: 'selectedItems'});
+        }
+        
         function getFoodDetail(vm, data){
             var measures = _.pluck(data.report.food.nutrients[0].measures, 'label');
             var nutrientIds = _.filter(_.pluck(nutrients.nutrientList, 'nutrient_id'), function(x){ return x != 0});
@@ -139,14 +153,15 @@ define(function(require){
                     uom: uom,
                     qty: qty,
                     name: name,
-                    ndbno: ndbno,
+                    ndbno: parseInt(ndbno),
                     nutrients: getNutrients(uom, qty)
                 };
                 vm.selectedItems.push(obj);
                 vm.trigger('change', {field: 'selectedItems'});
-                var selectedTemplate = kendo.template($("#selected-item-template").html());
+/*                var selectedTemplate = kendo.template($("#selected-item-template").html());
                 var selectedHtml = selectedTemplate(vm.selectedItems);
-                $("#SelectedItems").html(selectedHtml);
+                $("#SelectedItems").html(selectedHtml);*/
+                $(".removeSelectedItem").on('click', vm.removeSelectedItem)
                 $("#SelectUOM").slideToggle();
         }
         function getNutrients(uom, qty){
@@ -171,6 +186,7 @@ define(function(require){
             });
             return list;
         }
+        
     }
     
 })

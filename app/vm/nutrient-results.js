@@ -18,7 +18,8 @@ define(function(require){
     
     function createVM(){
         var vm = {
-            foodList: []
+            foodList: [],
+            nutrientResults: []
         };
         
         
@@ -26,6 +27,7 @@ define(function(require){
             pubSub.subscribe("provideFoodList",function(msg, data){
                 vm.set('foodList', data);
                 var results = processor.getResultsFromFoodList(data);
+                vm.set('nutrientResults', results);
             });
         }
         
